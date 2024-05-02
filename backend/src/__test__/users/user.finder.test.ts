@@ -5,7 +5,7 @@ import { Server } from "http";
 import { startConnection } from "../../database/mongodb";
 import { UserModel } from "../../modules/users/entity/user-model";
 
-import { FAKE_USER } from "./user-fake-data";
+import { FAKE_USER } from  "../user-fake-data"
 
 import mongoose from "mongoose";
 import { Role, USER_ROLES } from "../../modules/users/entity/user";
