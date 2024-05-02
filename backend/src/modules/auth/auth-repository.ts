@@ -1,6 +1,7 @@
 import { User } from "../users/entity/user";
 
 export interface AuthRepository {
+  getUserByToken ({ id }:{id:string}): Promise<User | null>;
   login ({ email, password }: {
     email: string;
     password: string;

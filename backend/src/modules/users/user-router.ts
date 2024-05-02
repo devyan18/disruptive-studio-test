@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { userController } from "./dependencies";
 import { applyValidations } from "../../common/middlewares/apply-validations";
-import { newUserValidations } from "./validations/user-saver";
 import { userByEmailValidations, userByIdValidations } from "./validations/user-finder";
 
 const userRouter = Router();
@@ -23,13 +22,6 @@ userRouter.get(
   userByIdValidations,
   applyValidations,
   userController.getUserById.bind(userController)
-);
-
-userRouter.post(
-  "/",
-  newUserValidations,
-  applyValidations,
-  userController.createUser.bind(userController)
 );
 
 export { userRouter };

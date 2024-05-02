@@ -1,7 +1,7 @@
 export const USER_ROLES = {
-  ADMIN: "Admin",
-  LECTOR: "Lector",
-  CREATOR: "Creator"
+  Admin: "Admin",
+  Lector: "Lector",
+  Creator: "Creator"
 };
 
 export type Role = keyof typeof USER_ROLES;

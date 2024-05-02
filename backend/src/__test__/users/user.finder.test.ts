@@ -48,7 +48,7 @@ describe("Get all users", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.LECTOR
+      role: USER_ROLES.Lector
     });
     expect(response.status).toBe(201);
     const responseGet = await request(app).get(`${PATH}`);
@@ -58,7 +58,7 @@ describe("Get all users", () => {
     expect(user).toMatchObject({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
-      role: USER_ROLES.LECTOR
+      role: USER_ROLES.Lector
     })
   });
 });
@@ -75,7 +75,7 @@ describe("Get user by id", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.LECTOR
+      role: USER_ROLES.Lector
     })
     
     const user = response.body.data;
@@ -86,7 +86,7 @@ describe("Get user by id", () => {
     expect(responseGet.body.data).toMatchObject({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
-      role: USER_ROLES.LECTOR
+      role: USER_ROLES.Lector
     });
   });
 })
@@ -103,7 +103,7 @@ describe("Get user by email", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.LECTOR
+      role: USER_ROLES.Lector
     });
 
     const responseGet = await request(app).get(`${PATH}/email?email=${FAKE_USER.email}`);

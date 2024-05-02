@@ -41,7 +41,7 @@ describe("Create User", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.LECTOR
+      role: USER_ROLES.Lector
     });
 
     expect(response.status).toBe(201);
@@ -51,7 +51,7 @@ describe("Create User", () => {
     expect(user).toMatchObject({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
-      role: USER_ROLES.LECTOR
+      role: USER_ROLES.Lector
     });
   });
 })

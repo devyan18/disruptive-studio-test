@@ -1,12 +1,16 @@
 import { NextFunction, Request, Response } from "express";
-import { Role } from "../entity/user";
+import { Role, User } from "../entity/user";
 
 export const roleGuard = (roles: Role[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
-    if (roles.includes(req.user.role)) {
+    const user = req.user as User;
+
+    if (roles.includes(user.role)) {
       next();
     } else {
-      res.sendStatus(403);
+      const user = req.user as User;
+      console.log("Unauthorized from roleGuard", user.role, roles);
+      res.sendStatus(401);
     }
   };
 };
