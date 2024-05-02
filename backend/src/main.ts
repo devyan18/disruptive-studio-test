@@ -5,6 +5,7 @@ import { startConnection } from "./database/mongodb";
 // Main function
 async function main () {
   // Start connection to the database
+
   await startConnection(CONFIG.MONGODB_URI);
 
   // Start the application
