@@ -2,7 +2,7 @@ import { body } from "express-validator";
 import { USER_ROLES } from "../entity/user";
 import { userRepository } from "../dependencies";
 
-const validRoles = Object.values({ ...USER_ROLES }).filter((role) => role !== USER_ROLES.ADMIN);
+const validRoles = Object.values({ ...USER_ROLES }).filter((role) => role !== USER_ROLES.Admin);
 
 export const newUserValidations = [
   body("username")

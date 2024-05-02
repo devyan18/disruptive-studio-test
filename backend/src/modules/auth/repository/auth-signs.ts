@@ -17,7 +17,7 @@ export class AuthLogin {
 
     const isPasswordValid = await compareString(password, user.password);
 
-    if (isPasswordValid) {
+    if (!isPasswordValid) {
       throw new UserNotFound();
     }
 

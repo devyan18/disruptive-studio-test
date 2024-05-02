@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start:dev": "tsnd --respawn src/main.ts --dev",
+    "dev": "tsnd --respawn src/main.ts --dev",
     "start": "node dist/main.js",
     "build": "tsc"
   },
