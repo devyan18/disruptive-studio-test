@@ -8,7 +8,9 @@ import { UserModel } from "../../modules/users/entity/user-model";
 import { FAKE_USER } from "./user-fake-data";
 
 import mongoose from "mongoose";
-import { USER_ROLES } from "../../modules/users/entity/user";
+import { Role, USER_ROLES } from "../../modules/users/entity/user";
+
+import { userRepository } from "../../modules/users/dependencies";
 
 const app = buildApp();
 
@@ -44,13 +46,13 @@ describe("Get all users", () => {
   });
 
   it("should be return array with one user", async () => {
-    const response = await request(app).post(`${PATH}`).send({
+    await userRepository.save({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector
-    });
-    expect(response.status).toBe(201);
+      role: USER_ROLES.Lector as Role
+    })
+
     const responseGet = await request(app).get(`${PATH}`);
     expect(responseGet.body.data.length).toBe(1);
 
@@ -71,15 +73,16 @@ describe("Get user by id", () => {
   });
 
   it("should be return user", async () => {
-    const response = await request(app).post(`${PATH}`).send({
+    const user = await userRepository.save({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector
-    })
-    
-    const user = response.body.data;
-    const responseGet = await request(app).get(`${PATH}/${user.id}`);
+      role: USER_ROLES.Lector as Role
+    });
+
+    expect(user).not.toBeNull()
+  
+    const responseGet = await request(app).get(`${PATH}/${user?.id}`);
     
     expect(responseGet.status).toBe(200);
 
@@ -99,13 +102,12 @@ describe("Get user by email", () => {
   })
 
   it("should be return user", async () => {
-    await request(app).post(`${PATH}`).send({
+    await userRepository.save({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector
+      role: USER_ROLES.Lector as Role
     });
-
     const responseGet = await request(app).get(`${PATH}/email?email=${FAKE_USER.email}`);
 
     expect(responseGet.status).toBe(200);

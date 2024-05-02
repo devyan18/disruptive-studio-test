@@ -1,6 +1,7 @@
 import { TemathicRepository } from "../temathic-repository";
 import { TemathicModel } from "../entity/temathic-model";
 import { Temathic } from "../entity/temathic";
+import { TemathicNotFound } from "./temathic-erros";
 
 export class TemathicMongoRepository implements TemathicRepository {
   async findAll (): Promise<Temathic[]> {
@@ -36,5 +37,38 @@ export class TemathicMongoRepository implements TemathicRepository {
       createdTemathic.creator,
       createdTemathic.categories
     );
+  }
+
+  async update (temathic: Partial<Temathic>): Promise<Temathic | null> {
+    const temathicExists = await this.getById({ id: temathic.id! });
+
+    if (!temathicExists) {
+      throw new TemathicNotFound();
+    }
+
+    const updatedTemathic = await TemathicModel.findOneAndUpdate({
+      _id: temathic.id
+    }, {
+      $set: {
+        temathic: temathic.temathic,
+        categories: temathic.categories
+      }
+    }, { new: true });
+
+    return updatedTemathic;
+  }
+
+  async delete ({ id }: { id: string; }): Promise<boolean> {
+    const temathicExists = await this.getById({ id });
+
+    if (!temathicExists) {
+      throw new TemathicNotFound();
+    }
+
+    await TemathicModel.deleteOne({
+      _id: id
+    });
+
+    return true;
   }
 }
