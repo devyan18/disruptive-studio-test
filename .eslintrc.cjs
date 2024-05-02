@@ -5,7 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'standard'
+    'standard',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -18,5 +18,15 @@ module.exports = {
     "import/no-absolute-path": "off",
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
+    "no-useless-constructor": "off"
   },
+  // config jest to work with typescript
+  overrides: [
+    {
+      files: ['**/*.test.ts', '**/*.test.tsx'],
+      env: { jest: true },
+      extends: ['plugin:jest/recommended'],
+      plugins: ['jest'],
+    },
+  ],
 }
