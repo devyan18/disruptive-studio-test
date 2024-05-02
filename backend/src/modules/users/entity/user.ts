@@ -1,6 +1,6 @@
 export const USER_ROLES = {
   Admin: "Admin",
-  Lector: "Lector",
+  Reader: "Reader",
   Creator: "Creator"
 };
 

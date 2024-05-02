@@ -9,6 +9,11 @@ export class AuthController {
     private readonly authRegister: AuthRegister
   ) {}
 
+  async me (req: Request, res: Response) {
+    console.log(req.user);
+    return res.status(200).json({ data: req.user });
+  }
+
   async login (req: Request, res: Response) {
     try {
       const user = await this.authLogin.run(req.body);

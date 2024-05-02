@@ -18,7 +18,8 @@ module.exports = {
     "import/no-absolute-path": "off",
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "react-refresh/only-export-components": "off"
   },
   // config jest to work with typescript
   overrides: [
