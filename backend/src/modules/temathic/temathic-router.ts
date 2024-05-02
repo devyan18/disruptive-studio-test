@@ -26,10 +26,7 @@ temathicRouter.get(
 temathicRouter.post(
   "/",
   passport.authenticate("jwt", { session: false }),
-  roleGuard([
-    USER_ROLES.Creator as Role,
-    USER_ROLES.Admin as Role
-  ]),
+  roleGuard([USER_ROLES.Admin as Role]),
   temathicCreationValidations,
   applyValidations,
   temathicController.createTemathic.bind(temathicController)
