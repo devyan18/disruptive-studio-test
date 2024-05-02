@@ -8,6 +8,7 @@ type AuthResponseData = {
 }
 
 export const loginService = async (email: string, password: string) => {
+  console.log("INFO", SERVER_HOST);
   const { data } = await axios.post<AuthResponseData>(`${SERVER_HOST}/auth/login`, { email, password });
   return data;
 };

@@ -10,10 +10,10 @@ RUN pnpm install
 
 COPY . .
 
-RUN pnpm add global typescript
+RUN node /app/setup.env.mjs
+RUN pnpm add typescript servor --save-dev
 RUN pnpm run build
-RUN pnpm install global servor
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["pnpx", "servor", "dist", "index.html", "3000"]
