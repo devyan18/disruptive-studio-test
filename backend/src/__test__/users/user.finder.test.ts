@@ -5,7 +5,7 @@ import { Server } from "http";
 import { startConnection } from "../../database/mongodb";
 import { UserModel } from "../../modules/users/entity/user-model";
 
-import { FAKE_USER } from  "../user-fake-data"
+import { FAKE_USER } from "../user-fake-data";
 
 import mongoose from "mongoose";
 import { Role, USER_ROLES } from "../../modules/users/entity/user";
@@ -30,14 +30,13 @@ afterAll(done => {
   });
 });
 
-
 beforeEach(async () => {
   await UserModel.deleteMany({});
-})
+});
 
 afterEach(async () => {
   await UserModel.deleteMany({});
-})
+});
 
 describe("Get all users", () => {
   it("should be return array", async () => {
@@ -50,8 +49,8 @@ describe("Get all users", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector as Role
-    })
+      role: USER_ROLES.Reader as Role
+    });
 
     const responseGet = await request(app).get(`${PATH}`);
     expect(responseGet.body.data.length).toBe(1);
@@ -60,8 +59,8 @@ describe("Get all users", () => {
     expect(user).toMatchObject({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
-      role: USER_ROLES.Lector
-    })
+      role: USER_ROLES.Reader
+    });
   });
 });
 
@@ -77,44 +76,42 @@ describe("Get user by id", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector as Role
+      role: USER_ROLES.Reader as Role
     });
 
-    expect(user).not.toBeNull()
-  
+    expect(user).not.toBeNull();
+
     const responseGet = await request(app).get(`${PATH}/${user?.id}`);
-    
+
     expect(responseGet.status).toBe(200);
 
     expect(responseGet.body.data).toMatchObject({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
-      role: USER_ROLES.Lector
+      role: USER_ROLES.Reader
     });
   });
-})
-
+});
 
 describe("Get user by email", () => {
   it("should be return 404 if user not found", async () => {
     const response = await request(app).get(`${PATH}/email?email=${FAKE_USER.email}`);
     expect(response.status).toBe(404);
-  })
+  });
 
   it("should be return user", async () => {
     await userRepository.save({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector as Role
+      role: USER_ROLES.Reader as Role
     });
     const responseGet = await request(app).get(`${PATH}/email?email=${FAKE_USER.email}`);
 
     expect(responseGet.status).toBe(200);
 
     expect(responseGet.body.data).toMatchObject({
-      email: FAKE_USER.email,
+      email: FAKE_USER.email
     });
-
-  })
-})
+  });
+});

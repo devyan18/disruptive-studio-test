@@ -46,13 +46,13 @@ describe("Register a new user", () => {
         username: FAKE_USER.username,
         email: FAKE_USER.email,
         password: FAKE_USER.password,
-        role: USER_ROLES.Lector as Role
+        role: USER_ROLES.Reader as Role
       });
 
     expect(response.body.data).toMatchObject({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
-      role: USER_ROLES.Lector as Role
+      role: USER_ROLES.Reader as Role
     });
 
     expect(response.status).toBe(201);
@@ -65,7 +65,7 @@ describe("Register a new user", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector as Role
+      role: USER_ROLES.Reader as Role
     });
 
     const response = await request(app)
@@ -74,7 +74,7 @@ describe("Register a new user", () => {
         username: FAKE_USER.username,
         email: FAKE_USER.email,
         password: FAKE_USER.password,
-        role: USER_ROLES.Lector as Role
+        role: USER_ROLES.Reader as Role
       });
 
     expect(response.status).toBe(400);
@@ -87,7 +87,7 @@ describe("Login user", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector as Role
+      role: USER_ROLES.Reader as Role
     });
 
     const response = await request(app)
@@ -100,7 +100,7 @@ describe("Login user", () => {
     expect(response.body.data).toMatchObject({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
-      role: USER_ROLES.Lector as Role
+      role: USER_ROLES.Reader as Role
     });
 
     expect(response.status).toBe(200);
@@ -124,7 +124,7 @@ describe("Login user", () => {
       username: FAKE_USER.username,
       email: FAKE_USER.email,
       password: FAKE_USER.password,
-      role: USER_ROLES.Lector as Role
+      role: USER_ROLES.Reader as Role
     });
 
     const response = await request(app)

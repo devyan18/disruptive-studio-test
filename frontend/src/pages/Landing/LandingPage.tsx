@@ -5,7 +5,7 @@ export default function LandingPage () {
 
   const goToLogin = () => {
     // Navigate to the login page
-    navigation("/auth/login");
+    navigation("/auth");
   };
 
   const goToSignUp = () => {

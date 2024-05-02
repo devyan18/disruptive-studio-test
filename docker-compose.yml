@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+  
+  client:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - server
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:latest
+    env_file:
+      - .env
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
