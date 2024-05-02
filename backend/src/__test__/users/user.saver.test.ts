@@ -40,6 +40,7 @@ describe("Create User", () => {
     const response = await request(app).post("/api/users").send({
       username: FAKE_USER.username,
       email: FAKE_USER.email,
+      password: FAKE_USER.password,
       role: USER_ROLES.LECTOR
     });
 

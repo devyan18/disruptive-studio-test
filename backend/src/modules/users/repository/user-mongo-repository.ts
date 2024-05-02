@@ -42,6 +42,7 @@ export class UserMongoRepository implements UserRepository {
       createdUser._id.toString(),
       createdUser.email,
       createdUser.username,
+      createdUser.password,
       createdUser.role
     );
   }

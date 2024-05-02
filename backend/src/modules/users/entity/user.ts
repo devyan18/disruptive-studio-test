@@ -11,6 +11,7 @@ export class User {
     public readonly id: string,
     public readonly email: string,
     public readonly username: string,
+    public password: string,
     public readonly role: Role
   ) {}
 }

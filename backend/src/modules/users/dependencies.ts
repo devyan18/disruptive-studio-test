@@ -4,22 +4,19 @@ import { UserCreator } from "./repository/user-saver";
 import {
   UserByEmailFinder,
   UserByIdFinder,
-  UserByUsernameFinder,
   UserFindAll
 } from "./repository/user-finder";
 
-const userMongoRepository = new UserMongoRepository();
+export const userRepository = new UserMongoRepository();
 
-const userFindAll = new UserFindAll(userMongoRepository);
-const userByIdFinder = new UserByIdFinder(userMongoRepository);
-const userByEmailFinder = new UserByEmailFinder(userMongoRepository);
-const userByUsernameFinder = new UserByUsernameFinder(userMongoRepository);
-const userUserCreator = new UserCreator(userMongoRepository);
+const userFindAll = new UserFindAll(userRepository);
+const userByIdFinder = new UserByIdFinder(userRepository);
+const userByEmailFinder = new UserByEmailFinder(userRepository);
+const userUserCreator = new UserCreator(userRepository);
 
 export const userController = new UserController(
   userFindAll,
   userByIdFinder,
   userByEmailFinder,
-  userByUsernameFinder,
   userUserCreator
 );

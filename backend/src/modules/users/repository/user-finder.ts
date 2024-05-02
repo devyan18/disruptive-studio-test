@@ -42,19 +42,3 @@ export class UserByEmailFinder {
     return user;
   }
 }
-
-export class UserByUsernameFinder {
-  constructor (
-    private readonly userRepository: UserRepository
-  ) {}
-
-  async run ({ username }:{username: string}) {
-    const user = await this.userRepository.getByUsername({ username });
-
-    if (!user) {
-      throw new UserNotFound();
-    }
-
-    return user;
-  }
-}
