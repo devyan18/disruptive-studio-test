@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getTokenFromLocalStorage } from "@/utilities/localstorage";
-import { createNewCategory } from "../services/category.services";
+import { createNewCategory } from "../../services/category.services";
 
 export const CreateCategory = () => {
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string>("");

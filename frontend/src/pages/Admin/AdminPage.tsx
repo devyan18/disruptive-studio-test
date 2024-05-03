@@ -1,5 +1,5 @@
 import styles from "./AdminPage.module.css";
-import { CreateCategory } from "./components/CreateCategory";
+import { CreateTemathic } from "./components/CreateTemathic/CreateTemathic";
 
 export default function AdminPage () {
   return (
@@ -7,12 +7,8 @@ export default function AdminPage () {
       <main>
         <h1>AdminPage</h1>
         <p>This is the Admin page.</p>
-        <CreateCategory />
+        <CreateTemathic />
       </main>
     </div>
   );
 }
-
-// public name: string,
-// public description: string,
-// public coverImage: string

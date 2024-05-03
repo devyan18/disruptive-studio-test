@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 import { Temathic } from "./temathic";
 
 const TemathicSchema = new Schema<Temathic>({
-  temathic: { type: String, required: true },
+  temathic: { type: String, required: true, unique: true },
   creator: { type: Schema.ObjectId, required: true, ref: "User" },
   usingImage: { type: Boolean, default: false },
   usingFiles: { type: Boolean, default: false },

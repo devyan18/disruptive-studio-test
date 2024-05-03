@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { TemathicNotFound } from "./repository/temathic-erros";
 import { TemathicByIdFinder, TemathicFindAll } from "./repository/temathic-finder";
 import { SaveTemathic } from "./repository/temathic-saver";
+import { User } from "../users/entity/user";
 
 export class TemathicController {
   constructor (
@@ -37,7 +38,12 @@ export class TemathicController {
 
   async create (req: Request, res: Response) {
     try {
-      const temathic = await this.temathicCreator.run(req.body);
+      const user = req.user as User;
+
+      const temathic = await this.temathicCreator.run({
+        ...req.body,
+        creator: user.id
+      });
 
       return res.status(201).json({ data: temathic });
     } catch (error) {
