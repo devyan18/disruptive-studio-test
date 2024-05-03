@@ -7,6 +7,7 @@ import {
 import { MultimediaCreator, MultimediaUpdate } from "./repository/multimedia-saver";
 import { MultimediaDestroy } from "./repository/multimedia-destroy";
 import { MultimediaNotFound } from "./repository/multimedia-errors";
+import { User } from "../users/entity/user";
 
 export class MultimediaController {
   constructor (
@@ -56,7 +57,14 @@ export class MultimediaController {
 
   async createMultimedia (req: Request, res: Response) {
     try {
-      const multimedia = await this.multimediaCreator.run(req.body);
+      const user = req.user as User;
+
+      console.log(user.id);
+
+      const multimedia = await this.multimediaCreator.run({
+        ...req.body,
+        author: user.id
+      });
 
       return res.status(201).json({ data: multimedia });
     } catch (error) {

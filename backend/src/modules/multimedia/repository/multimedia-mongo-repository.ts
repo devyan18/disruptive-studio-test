@@ -5,7 +5,7 @@ import { MultimediaNotFound } from "./multimedia-errors";
 
 export class MultimediaMongoRepository implements MultimediaRepository {
   async findAll (): Promise<Multimedia[]> {
-    return await MultimediaModel.find();
+    return await MultimediaModel.find().populate("thematic");
   }
 
   async findById ({ id }: { id: string; }): Promise<Multimedia | null> {
@@ -17,15 +17,29 @@ export class MultimediaMongoRepository implements MultimediaRepository {
     throw new Error("Method not implemented.");
   }
 
-  async create (multimedia: Partial<Multimedia>): Promise<Multimedia | null> {
-    const instance = new MultimediaModel(multimedia);
-    const newMulti = await instance.save();
+  async create (multimedia: {
+    title: string;
+    thematic: string;
+    author: string;
+    image?: string;
+    files?: string;
+    text?: string;
+    url?: string;
+  }): Promise<Multimedia | null> {
+    console.log();
 
-    if (!newMulti) {
+    const instance = new MultimediaModel({
+      ...multimedia,
+      image: multimedia.image?.[1]
+    });
+
+    const newMultimedia = await instance.save();
+
+    if (!newMultimedia) {
       throw new Error("Error creating multimedia");
     }
 
-    return newMulti;
+    return newMultimedia;
   }
 
   async update (id: string, multimedia: Partial<Multimedia>): Promise<Multimedia | null> {

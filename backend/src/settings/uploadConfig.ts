@@ -6,7 +6,14 @@ import fs from "node:fs";
 // Configuración del almacenamiento
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, "..", "uploads");
+    let uploadPath = path.join(__dirname, "..", "uploads");
+
+    // Determinar subcarpeta basada en el tipo MIME del archivo
+    if (file.mimetype.startsWith("image/")) {
+      uploadPath = path.join(uploadPath, "images"); // Guardar imágenes en la carpeta 'images'
+    } else {
+      uploadPath = path.join(uploadPath, "files"); // Guardar otros archivos en la carpeta 'files'
+    }
 
     // Crear directorio si no existe
     if (!fs.existsSync(uploadPath)) {

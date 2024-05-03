@@ -6,7 +6,7 @@ import { CategoryNotFound } from "./category-errors";
 export class CategoryMongoRepository implements CategoryRepository {
   async getCategories (): Promise<Category[]> {
     try {
-      return await CategoryModel.find();
+      return await CategoryModel.find().populate("thematics");
     } catch (error) {
       throw new Error("Error getting categories");
     }
@@ -65,5 +65,36 @@ export class CategoryMongoRepository implements CategoryRepository {
     }
 
     return true;
+  }
+
+  async insertMany (categories: Partial<Category>[]): Promise<boolean> {
+    const inserted = await CategoryModel.insertMany(categories);
+
+    if (!inserted) {
+      throw new Error("Error inserting categories");
+    }
+
+    return true;
+  }
+
+  async addThematicToCategory (categoryId: string, thematicId: string): Promise<Category> {
+    console.log(categoryId, thematicId);
+    const category = await CategoryModel.findOne({ _id: categoryId });
+
+    if (!category) {
+      throw new CategoryNotFound();
+    }
+
+    const updated = await CategoryModel.findOneAndUpdate({ _id: categoryId }, {
+      $push: {
+        thematics: thematicId
+      }
+    }, { new: true });
+
+    if (!updated) {
+      throw new Error("Error adding thematic to category");
+    }
+
+    return updated;
   }
 }

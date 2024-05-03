@@ -4,7 +4,8 @@ import { Category } from "./category";
 const categorySchema = new Schema<Category>({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  coverImage: { type: String, required: true }
+  coverImage: { type: String, required: true },
+  thematics: [{ type: Schema.Types.ObjectId, ref: "Thematic" }]
 }, {
   timestamps: true,
   versionKey: false

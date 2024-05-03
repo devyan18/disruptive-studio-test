@@ -20,9 +20,10 @@ export const buildApp = () => {
   app.use(cors());
   app.use(morgan("dev"));
   app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
+  app.use(express.urlencoded({ extended: true }));
 
   const pathOfPublic = path.join(__dirname, "uploads");
+
   app.use(
     "/public",
     passport.authenticate("jwt", { session: false }),

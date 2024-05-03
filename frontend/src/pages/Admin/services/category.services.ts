@@ -18,6 +18,6 @@ export const createNewCategory = async (form: FormData, token: string) => {
 };
 
 export const getAllCategories = async () => {
-  const response = await axios.get<Category[]>(`${SERVER_HOST}/category`);
+  const response = await axios.get<{data: Category[]}>(`${SERVER_HOST}/category`);
   return response.data;
 };

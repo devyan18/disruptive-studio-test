@@ -6,7 +6,15 @@ export class MultimediaCreator {
     private readonly multimediaRepository: MultimediaRepository
   ) {}
 
-  async run (multimedia: Partial<Multimedia>) {
+  async run (multimedia:{
+    title: string;
+    thematic: string;
+    author: string;
+    image?: string;
+    files?: string;
+    text?: string;
+    url?: string;
+  }) {
     return this.multimediaRepository.create(multimedia);
   }
 }

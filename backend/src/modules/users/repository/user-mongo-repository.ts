@@ -2,7 +2,7 @@ import { UserRepository } from "../user-repository";
 import { UserModel } from "../entity/user-model";
 import { Role, USER_ROLES, User } from "../entity/user";
 import { CONFIG } from "../../../settings/env-vars";
-import { UserNotCreated, UserRepeated } from "./user-errors";
+import { UserNotCreated } from "./user-errors";
 
 export class UserMongoRepository implements UserRepository {
   async findAll (): Promise<User[]> {
@@ -49,11 +49,11 @@ export class UserMongoRepository implements UserRepository {
     );
   }
 
-  async createAdminUser (): Promise<User | null> {
+  async createAdminUser (): Promise<User> {
     const exist = await UserModel.findOne({ role: "Admin" });
 
     if (exist) {
-      throw new UserRepeated();
+      return exist;
     }
 
     const newUser = new UserModel({

@@ -1,2 +1,2 @@
 export { CreateCategory } from "./CreateCategory";
-export { CreateTemathic } from "./CreateTemathic";
+export { CreateThematic } from "./CreateThematic";

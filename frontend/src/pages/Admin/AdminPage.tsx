@@ -1,5 +1,5 @@
 import styles from "./AdminPage.module.css";
-import { CreateTemathic } from "./components/CreateTemathic/CreateTemathic";
+import { CreateThematic } from "./components/CreateThematic";
 
 export default function AdminPage () {
   return (
@@ -7,7 +7,7 @@ export default function AdminPage () {
       <main>
         <h1>AdminPage</h1>
         <p>This is the Admin page.</p>
-        <CreateTemathic />
+        <CreateThematic />
       </main>
     </div>
   );

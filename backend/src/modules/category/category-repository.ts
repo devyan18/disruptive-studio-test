@@ -6,4 +6,6 @@ export interface CategoryRepository {
   createCategory(category: Category): Promise<Category>;
   updateCategory(id: string, category: Category): Promise<Category>;
   deleteCategory(id: string): Promise<boolean>;
+  addThematicToCategory(categoryId: string, thematicId: string): Promise<Category>;
+  insertMany(categories: Partial<Category>[]): Promise<boolean>;
 }

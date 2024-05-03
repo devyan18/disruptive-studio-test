@@ -1,13 +1,13 @@
-import { Temathic } from "@/model/Temathic";
+import { Thematic } from "@/model/Thematic";
 import { SERVER_HOST } from "@/utilities/constants";
 import axios from "axios";
 
-type ResponseCreateTemathic = {
-  data: Temathic
+type ResponseCreateThematic = {
+  data: Thematic
 }
 
-export const createTemathic = async (form: Partial<Temathic>, token: string) => {
-  const response = await axios.post<ResponseCreateTemathic>(`${SERVER_HOST}/temathic`, form, {
+export const createThematic = async (form: Partial<Thematic>, token: string) => {
+  const response = await axios.post<ResponseCreateThematic>(`${SERVER_HOST}/temathic`, form, {
     headers: {
       Authorization: token,
       "Content-Type": "application/json"

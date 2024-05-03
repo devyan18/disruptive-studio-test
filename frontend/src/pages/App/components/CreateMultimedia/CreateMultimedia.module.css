@@ -1,0 +1,6 @@
+.CreateMultimediaContainer {}
+
+.CreateMultimediaForm {
+  display: flex;
+  flex-direction: column;
+}

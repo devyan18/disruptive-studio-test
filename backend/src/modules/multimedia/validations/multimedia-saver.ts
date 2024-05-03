@@ -4,28 +4,15 @@ export const multimediaSaverValidations = [
   body("title")
     .exists()
     .withMessage("Title is required"),
-  body("temathic")
+  body("thematic")
     .exists()
-    .withMessage("Temathic is required")
-    .isMongoId()
-    .withMessage("ID must be a valid MongoID"),
-  body("author")
-    .exists()
-    .withMessage("Author is required")
+    .withMessage("Thematic is required")
     .isMongoId()
     .withMessage("ID must be a valid MongoID"),
   body("url")
     .optional()
     .isURL()
     .withMessage("URL must be a valid URL"),
-  body("image")
-    .optional()
-    .isURL()
-    .withMessage("Image must be a valid URL"),
-  body("file")
-    .optional()
-    .isURL()
-    .withMessage("File must be a valid URL"),
   body("text")
     .optional()
     .isString()
@@ -45,7 +32,7 @@ export const multimediaUpdaterValidations = [
   body("temathic")
     .optional()
     .isString()
-    .withMessage("Temathic must be a string")
+    .withMessage("Thematic must be a string")
     .isMongoId()
     .withMessage("ID must be a valid MongoID"),
   body("author")

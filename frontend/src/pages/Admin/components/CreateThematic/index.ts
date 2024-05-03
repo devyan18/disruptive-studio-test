@@ -1,0 +1,1 @@
+export { CreateThematic } from "./CreateThematic";

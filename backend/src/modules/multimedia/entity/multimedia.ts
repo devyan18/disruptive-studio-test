@@ -1,4 +1,4 @@
-import { Temathic } from "../../temathic/entity/temathic";
+import { Thematic } from "../../thematic/entity/thematic";
 import { User } from "../../users/entity/user";
 
 export class Multimedia {
@@ -6,7 +6,7 @@ export class Multimedia {
     public id: string,
     public title: string,
 
-    public temathic: Temathic,
+    public thematic: Thematic,
     public author: User,
 
     public url?: string,

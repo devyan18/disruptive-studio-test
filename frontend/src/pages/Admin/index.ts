@@ -1,1 +1,3 @@
-export { default as AdminPage } from "./AdminPage";
+import { lazy } from "react";
+
+export const AdminPage = lazy(() => import("./AdminPage"));
