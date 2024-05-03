@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { PrivateRoutes } from "@/common/components";
 
-import { AuthPage, LandingPage, LoginPage, SignUpPage } from "./pages";
+import { AdminPage, AuthPage, LandingPage, LoginPage, SignUpPage } from "@/pages";
 
 // Router component that defines the routes of the application
 export const AppRouter = () => {
@@ -10,6 +10,7 @@ export const AppRouter = () => {
       <Routes>
           {/* Private Routes */}
           <Route path='/admin' element={<PrivateRoutes roles={["Admin"]}/>}>
+            <Route index element={<AdminPage />} />
           </Route>
           <Route path='/creator' element={<PrivateRoutes roles={["Admin", "Creator"]}/>}>
           </Route>

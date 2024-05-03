@@ -35,7 +35,10 @@ export class CategoryController {
 
   async create (req: Request, res: Response) {
     try {
-      const category = await this.createCategory.run(req.body);
+      const category = await this.createCategory.run({
+        ...req.body,
+        coverImage: `${req.file?.filename}`
+      });
 
       return res.status(201).json({ data: category });
     } catch (error) {

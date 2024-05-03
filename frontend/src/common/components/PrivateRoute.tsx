@@ -26,7 +26,7 @@ const PrivateRoutes = ({ roles }: {roles: Roles[]}) => {
         <h1>Loading...</h1>
       </div>
     }>
-      <Outlet />;
+      <Outlet />
     </Suspense>
   );
 };

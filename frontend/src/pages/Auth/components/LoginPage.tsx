@@ -28,6 +28,10 @@ export default function LoginPage () {
         saveTokenInLocalStorage(token);
         handleUser(data);
         handleReset();
+
+        if (data.role === "Admin") {
+          return navigate("/admin");
+        }
         navigate("/app");
       })
       .catch((error) => {
