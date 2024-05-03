@@ -1,0 +1,75 @@
+.CategoryAccordionContainer {
+  padding: 0 20px;
+  cursor: pointer;
+  min-height: 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 32px;
+}
+
+.CategoryAccordionContainer div:first-child {
+  font-size: 20px;
+  padding: 4px 20px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.CategoryAccordionContainer div p {
+  user-select: none;
+}
+
+.CategoryAccordionContainer ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 0 0 20px;
+}
+
+.CategoryAccordionContainer div ul li {
+  min-height: 24px;
+  font-size: 16px;
+  padding: 12px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.CategoryAccordionContainer div:first-child:hover {
+  background-color: #C06E37;
+}
+
+.CategoryAccordionContainer div ul li:hover {
+  background-color: #C06E37;
+}
+
+.badgeYellow {
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: #c1b93e;
+}
+
+.badgePurple {
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: #802379;
+}
+
+.badgeGreen {
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: #3b7d02;
+}
+
+.badgeRed {
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: #c13e3e;
+}
+
+.offInfo {
+  border: 1px solid #2E3235;
+}

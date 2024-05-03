@@ -2,7 +2,7 @@ import { Multimedia } from "./entity/multimedia";
 
 export interface MultimediaRepository {
   findAll (): Promise<Multimedia[]>;
-  findById ({ id } : {id : string}): Promise<Multimedia | null>;
+  findById ({ id } : {id : string}): Promise<Multimedia[] | null>;
   search (query: string): Promise<Multimedia[]>;
   create (multimedia: {
     title: string;

@@ -8,8 +8,8 @@ export class MultimediaMongoRepository implements MultimediaRepository {
     return await MultimediaModel.find().populate("thematic");
   }
 
-  async findById ({ id }: { id: string; }): Promise<Multimedia | null> {
-    return await MultimediaModel.findOne({ _id: id });
+  async findById ({ id }: { id: string; }): Promise<Multimedia[] | null> {
+    return await MultimediaModel.find({ thematic: id });
   }
 
   async search (query: string): Promise<Multimedia[]> {

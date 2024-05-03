@@ -6,6 +6,8 @@ import { useSession } from "@/context/auth/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { saveTokenInLocalStorage } from "@/utilities/localstorage";
 
+import styles from "./styles.module.css";
+
 export default function SignUpPage () {
   const { handleUser } = useSession();
   const navigate = useNavigate();
@@ -39,30 +41,39 @@ export default function SignUpPage () {
   };
 
   return (
-    <div>
+    <div className={styles.AuthForm}>
       <h2>Register Form</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Devyan18"
-          value={values.username}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="example@example.com"
-          value={values.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="**********"
-          value={values.password}
-          onChange={handleChange}
-        />
+        <div>
+          <label htmlFor="username">username:</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Devyan18"
+            value={values.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+            <input
+            type="email"
+            name="email"
+            placeholder="example@example.com"
+            value={values.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="**********"
+            value={values.password}
+            onChange={handleChange}
+          />
+        </div>
         <select name="role" value={values.role} onChange={handleChange}>
           {Object.values(ROLES)
             .filter((role) => role !== ROLES.Admin)
@@ -77,6 +88,7 @@ export default function SignUpPage () {
         <button type="submit">Register</button>
       </form>
       <Link to="/auth">Go to Login</Link>
+      <Link to="/app">Start Without Account</Link>
     </div>
   );
 }

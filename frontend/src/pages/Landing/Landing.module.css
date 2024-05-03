@@ -1,0 +1,19 @@
+.LandingPage {
+  display: grid;
+  place-content: center;
+  min-height: 80vh;
+  gap: 20px;
+}
+
+.LandingPage>button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3A3D41;
+  color: white;
+  cursor: pointer;
+}
+
+.LandingPage>button:hover {
+  background-color: #2F3135;
+}

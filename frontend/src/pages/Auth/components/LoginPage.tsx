@@ -5,6 +5,8 @@ import { saveTokenInLocalStorage } from "@/utilities/localstorage";
 import { useSession } from "@/context/auth/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 
+import styles from "./styles.module.css";
+
 export default function LoginPage () {
   const { handleUser } = useSession();
 
@@ -43,23 +45,29 @@ export default function LoginPage () {
   };
 
   return (
-    <div>
-      Login form
+    <div className={styles.AuthForm}>
+      <h2>Login form</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="example@example.com"
-          onChange={handleChange}
-          value={values.email}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="*********"
-          onChange={handleChange}
-          value={values.password}
-        />
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="example@example.com"
+            onChange={handleChange}
+            value={values.email}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="*********"
+            onChange={handleChange}
+            value={values.password}
+          />
+        </div>
         <button type="submit">Login</button>
       </form>
 

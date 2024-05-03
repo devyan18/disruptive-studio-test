@@ -1,3 +1,4 @@
+import { Multimedia } from "@/model/Multimedia";
 import { SERVER_HOST } from "@/utilities/constants";
 import axios from "axios";
 
@@ -60,6 +61,20 @@ export const createMultimedia = async (
     });
 
     return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getMultimediaByThematic = async (thematicId: string, token: string) => {
+  try {
+    const response = await axios.get<{data: Multimedia[]}>(`${SERVER_HOST}/multimedia/${thematicId}`, {
+      headers: {
+        Authorization: token
+      }
+    });
+
+    return response.data;
   } catch (error) {
     console.error(error);
   }

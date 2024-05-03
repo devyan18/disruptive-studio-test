@@ -23,12 +23,7 @@ export const AppRouter = () => {
           path="/creator"
           element={<PrivateRoutes roles={["Admin", "Creator"]} />}
         ></Route>
-        <Route
-          path="/app"
-          element={<PrivateRoutes roles={["Admin", "Creator", "Reader"]} />}
-        >
-          <Route index element={<AppPage />} />
-        </Route>
+        <Route path="/app" element={<AppPage />} />
 
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />

@@ -21,7 +21,7 @@ export default function Image (props: Props) {
 
   useEffect(() => {
     const token = getTokenFromLocalStorage()!;
-    fetch(`${SERVER_ASSETS}/${props.src}`, {
+    fetch(`${SERVER_ASSETS}/images/${props.src}`, {
       headers: {
         Authorization: token
       }

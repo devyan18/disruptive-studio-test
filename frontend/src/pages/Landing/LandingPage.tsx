@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import styles from "./Landing.module.css";
+
 export default function LandingPage () {
   const navigation = useNavigate();
 
@@ -8,7 +10,7 @@ export default function LandingPage () {
   const goToSignUp = () => navigation("/auth/signup");
 
   return (
-    <div>
+    <div className={styles.LandingPage}>
       <h1>LandingPage</h1>
       <button
         onClick={goToAdmin}
