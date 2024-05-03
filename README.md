@@ -4,6 +4,7 @@ Este repositorio es un monorepositorio multipaquete para la prueba técnica de D
 
 # Objetivos de la prueba técnica
 
+- ✅ Aplicación de buenas prácticas, código escalable, mantenible y limpio.
 - ✅ Login, registro y validación de roles de los usuarios.
 - ✅ Aplicar restricciones en base a los roles - Solo el usuario con el rol de **Admin** puede realizar las operaciones de borrado de información. Solo el usuario con el rol de **Creador** puede realizar las operaciones de lectura y escritura.
 - ✅ Validaciones de las entradas de la API - Aplicadas con express-validator (Aunque también se podría haber usado JOI o Zod)
