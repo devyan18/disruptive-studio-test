@@ -10,8 +10,7 @@ export class TemathicController {
     private readonly temathicCreator: SaveTemathic
   ) {}
 
-  async getAllTemathics (req: Request, res: Response) {
-    console.log(req.user);
+  async findAll (req: Request, res: Response) {
     try {
       const temathics = await this.temathicFindAll.run();
 
@@ -22,7 +21,7 @@ export class TemathicController {
     }
   }
 
-  async getTemathicById (req: Request, res: Response) {
+  async findById (req: Request, res: Response) {
     try {
       const temathic = await this.temathicByIdFinder.run({ id: req.params.id });
 
@@ -36,7 +35,7 @@ export class TemathicController {
     }
   }
 
-  async createTemathic (req: Request, res: Response) {
+  async create (req: Request, res: Response) {
     try {
       const temathic = await this.temathicCreator.run(req.body);
 

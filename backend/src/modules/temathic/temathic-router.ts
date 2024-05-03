@@ -12,7 +12,7 @@ const temathicRouter = Router();
 temathicRouter.get(
   "/",
   passport.authenticate("jwt", { session: false }),
-  temathicController.getAllTemathics.bind(temathicController)
+  temathicController.findAll.bind(temathicController)
 );
 
 temathicRouter.get(
@@ -20,7 +20,7 @@ temathicRouter.get(
   passport.authenticate("jwt", { session: false }),
   temathicIdValidations,
   applyValidations,
-  temathicController.getTemathicById.bind(temathicController)
+  temathicController.findById.bind(temathicController)
 );
 
 temathicRouter.post(
@@ -29,7 +29,7 @@ temathicRouter.post(
   roleGuard([USER_ROLES.Admin as Role]),
   temathicCreationValidations,
   applyValidations,
-  temathicController.createTemathic.bind(temathicController)
+  temathicController.create.bind(temathicController)
 );
 
 export { temathicRouter };

@@ -9,3 +9,9 @@ export class UserNotCreated extends Error {
     super("User not created");
   }
 }
+
+export class UserRepeated extends Error {
+  constructor () {
+    super("User repeated");
+  }
+}

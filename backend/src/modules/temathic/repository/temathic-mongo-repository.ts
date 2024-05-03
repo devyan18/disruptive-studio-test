@@ -31,12 +31,7 @@ export class TemathicMongoRepository implements TemathicRepository {
       return null;
     }
 
-    return new Temathic(
-      createdTemathic._id.toString(),
-      createdTemathic.temathic,
-      createdTemathic.creator,
-      createdTemathic.categories
-    );
+    return createdTemathic;
   }
 
   async update (temathic: Partial<Temathic>): Promise<Temathic | null> {
@@ -51,7 +46,7 @@ export class TemathicMongoRepository implements TemathicRepository {
     }, {
       $set: {
         temathic: temathic.temathic,
-        categories: temathic.categories
+        usingImage: temathic.usingImage
       }
     }, { new: true });
 

@@ -1,10 +1,13 @@
 import { model, Schema } from "mongoose";
-import { CATEGORIES, Temathic } from "./temathic";
+import { Temathic } from "./temathic";
 
 const TemathicSchema = new Schema<Temathic>({
   temathic: { type: String, required: true },
   creator: { type: Schema.ObjectId, required: true, ref: "User" },
-  categories: [{ type: String, required: true, enum: Object.values(CATEGORIES) }]
+  usingImage: { type: Boolean, default: false },
+  usingFiles: { type: Boolean, default: false },
+  usingText: { type: Boolean, default: false },
+  usingUrl: { type: Boolean, default: false }
 },
 {
   timestamps: true,

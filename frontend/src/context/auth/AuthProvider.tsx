@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { User } from "@/model/User";
-import { getTokenFromLocalStorage } from "@/utilities/localstorage";
+import { getTokenFromLocalStorage, removeTokenFromLocalStorage } from "@/utilities/localstorage";
 import { getUserFromToken } from "@/common/services/session.service";
 
 type UserState = User | null | undefined;
@@ -44,14 +44,18 @@ export const AuthProvider = (props: IProvider) => {
       return;
     }
 
+    if (!token && user === null) {
+      removeTokenFromLocalStorage();
+    }
+
     if (user === null || user === undefined) {
       getUserFromToken(token)
         .then((response) => {
           handleUser(response.data);
         })
-        .catch((e) => {
-          console.log(e);
+        .catch(() => {
           setUser(null);
+          removeTokenFromLocalStorage();
         })
         .finally(() => {
           setLoading(false);

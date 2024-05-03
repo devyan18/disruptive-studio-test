@@ -6,4 +6,5 @@ export interface UserRepository {
   getByEmail ({ email }: {email: string}): Promise<User | null>;
   getByUsername ({ username }: {username: string}): Promise<User | null>;
   save (user: Partial<User>): Promise<User | null>;
+  createAdminUser (): Promise<User | null>;
 }
