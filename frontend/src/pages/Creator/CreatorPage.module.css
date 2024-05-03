@@ -1,0 +1,20 @@
+.CreatorPageContainer {
+  display: grid;
+  place-content: center;
+  min-height: 80vh;
+}
+
+.BackButton {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3A3D41;
+  color: white;
+  cursor: pointer;
+  max-width: 230px;
+}
+
+.BackButton:hover {
+  background-color: #2F3135;
+}

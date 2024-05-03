@@ -4,6 +4,10 @@
   align-items: flex-start;
   justify-content: center;
   gap: 4px;
+
+  padding: 10px;
+  border: 1px solid #3A3D41;
+  border-radius: 4px;
 }
 
 .inputLabel {

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { PrivateRoutes } from "@/common/components";
 
 import {
@@ -9,6 +9,8 @@ import {
   LoginPage,
   SignUpPage
 } from "@/pages";
+import { Suspense } from "react";
+import CreatorPage from "./pages/Creator/CreatorPage";
 
 // Router component that defines the routes of the application
 export const AppRouter = () => {
@@ -22,8 +24,14 @@ export const AppRouter = () => {
         <Route
           path="/creator"
           element={<PrivateRoutes roles={["Admin", "Creator"]} />}
-        ></Route>
-        <Route path="/app" element={<AppPage />} />
+        >
+          <Route path="upload" element={<CreatorPage />} />
+        </Route>
+        <Route path="/app" element={ <Suspense fallback={<div>Loading...</div>}>
+            <Outlet/>
+          </Suspense>}>
+          <Route index element={<AppPage/>} />
+        </Route>
 
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />

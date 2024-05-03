@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { getTokenFromLocalStorage } from "@/utilities/localstorage";
 import { createNewCategory } from "../../services/category.services";
 
+import styles from "./CreateCategory.module.css";
+
 export const CreateCategory = () => {
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string>("");
 
@@ -32,7 +34,7 @@ export const CreateCategory = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <h2>Create new Category</h2>
 
       <input type="text" name="name" placeholder="My Super Category" />

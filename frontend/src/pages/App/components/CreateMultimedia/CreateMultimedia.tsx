@@ -14,7 +14,12 @@ export default function CreateMultimedia () {
   return (
     <div className={styles.CreateMultimediaContainer}>
       <form className={styles.CreateMultimediaForm} onSubmit={handleSubmit}>
-        <input type="text" name="title" placeholder="title" />
+        <h2>Multimedia Creator</h2>
+        <div>
+          <label htmlFor="title">Title:</label>
+          <input type="text" name="title" placeholder="My new file" />
+        </div>
+        <label htmlFor="category">Category and Thematic </label>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <select name="category" onChange={handleSelectCategory}>
             {categories.map((category) => (
@@ -51,7 +56,9 @@ export default function CreateMultimedia () {
         {selectedThematic && selectedThematic.usingText && (
           <div>
             <label htmlFor="text">Text: </label>
-            <textarea name="text" placeholder="Text" />
+            <textarea name="text" placeholder="e quasi tempore consequatur inventore eveniet dignissimos? Nesciunt porro iste maxime quam sunt id." >
+
+            </textarea>
           </div>
         )}
 

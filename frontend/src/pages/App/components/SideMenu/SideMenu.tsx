@@ -7,7 +7,7 @@ export default function SideMenu () {
 
   return (
     <aside className={styles.SideMenuContainer}>
-      <nav className={styles.manu}>
+      <nav className={styles.menu}>
         <ul>
           <li>
             <Link to="/app">Home</Link>
@@ -18,6 +18,13 @@ export default function SideMenu () {
           {user
             ? <li><Link to="/admin">Admin</Link></li>
             : <li><Link to="/auth">Login</Link></li>
+          }
+          {
+            user && (user?.role === "Admin" || user?.role === "Creator") && (
+              <li>
+                <Link to="/creator/upload">Upload multimedia</Link>
+              </li>
+            )
           }
         </ul>
       </nav>

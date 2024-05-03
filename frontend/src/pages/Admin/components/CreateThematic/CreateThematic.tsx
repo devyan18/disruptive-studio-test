@@ -35,6 +35,7 @@ export const CreateThematic = () => {
 
   return (
     <form className={styles.createThematicContainer} onSubmit={handleSubmit}>
+      <h2>Create New Temathic</h2>
       <div className={styles.inputLabel}>
         <label htmlFor="temathic">Thematic:</label>
         <input type="text" id="temathic" name="temathic" placeholder="Basketball" />

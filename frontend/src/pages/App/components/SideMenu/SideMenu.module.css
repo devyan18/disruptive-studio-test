@@ -3,4 +3,48 @@
   grid-column: 1 / 3;
 }
 
-.menu {}
+.menu>ul {
+
+  /* navbar vertical */
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+
+  /* navbar styles */
+
+  border-right: 1px solid #3A3D41;
+
+  list-style: none;
+
+  /* remove default padding and margin */
+}
+
+.menu>ul>li {
+
+  /* navbar item styles */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  /* navbar item hover styles */
+
+  cursor: pointer;
+
+
+}
+
+.menu>ul>li>a {
+  /* as button styles */
+
+  padding: 10px;
+  border-radius: 5px;
+
+  /* navbar item active styles */
+
+  background-color: #3A3D41;
+
+}

@@ -5,6 +5,7 @@ import styles from "./Landing.module.css";
 export default function LandingPage () {
   const navigation = useNavigate();
 
+  const goToApp = () => navigation("/app");
   const goToAdmin = () => navigation("/admin");
   const goToLogin = () => navigation("/auth");
   const goToSignUp = () => navigation("/auth/signup");
@@ -12,6 +13,9 @@ export default function LandingPage () {
   return (
     <div className={styles.LandingPage}>
       <h1>LandingPage</h1>
+      <button
+        onClick={goToApp}
+      >Go to App</button>
       <button
         onClick={goToAdmin}
       >Go to Admin panel</button>
