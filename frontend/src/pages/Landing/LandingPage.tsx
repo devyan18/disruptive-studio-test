@@ -3,15 +3,8 @@ import { useNavigate } from "react-router-dom";
 export default function LandingPage () {
   const navigation = useNavigate();
 
-  const goToLogin = () => {
-    // Navigate to the login page
-    navigation("/auth");
-  };
-
-  const goToSignUp = () => {
-    // Navigate to the sign up page
-    navigation("/auth/signup");
-  };
+  const goToLogin = () => navigation("/auth");
+  const goToSignUp = () => navigation("/auth/signup");
 
   return (
     <div>

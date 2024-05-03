@@ -19,3 +19,14 @@ export class MultimediaFindById {
     return this.multimediaRepository.findById({ id });
   }
 }
+
+export class MultimediaSearch {
+  constructor (
+    private readonly multimediaRepository: MultimediaRepository
+  ) {}
+
+  async run <T> (query: T) {
+    console.log(query);
+    return this.multimediaRepository.search("");
+  }
+}

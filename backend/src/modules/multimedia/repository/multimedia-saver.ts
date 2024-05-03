@@ -1,7 +1,7 @@
 import { Multimedia } from "../entity/multimedia";
 import { MultimediaRepository } from "../multimedia-repository";
 
-export class MultimediaCreate {
+export class MultimediaCreator {
   constructor (
     private readonly multimediaRepository: MultimediaRepository
   ) {}
